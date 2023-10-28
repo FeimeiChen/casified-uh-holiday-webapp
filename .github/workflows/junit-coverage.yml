@@ -23,11 +23,9 @@ jobs:
 
       - name: Check if branch exists and create if not
         run: |
-             if [ -n git show-ref refs/heads/badges]; then
+            exists=$(git show-ref refs/heads/badges)
+             if [ -n "$exists" ]; then
                 echo "Branch badges already exists."
-            else
-                git checkout -b badges
-                echo "Branch badges created."
             fi     
 
 
