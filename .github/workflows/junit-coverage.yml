@@ -22,7 +22,15 @@ jobs:
           node-version: 16.x
 
       - name: Check if branch exists and create if not
-        run: git checkout -B badges
+        uses: GuillaumeFalourd/branch-exists@v1
+        with:
+        branch: badges
+
+      - if: steps.check-branch-exists.outputs.exists == 'true'
+        run: echo badges Branch exists'
+
+      - if: steps.check-branch-exists.outputs.exists == 'false'
+        run: echo '<BRANCH_NAME> Branch NOT FOUND'
 
 
       - name: Create badges branch
