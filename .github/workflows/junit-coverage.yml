@@ -41,12 +41,11 @@ jobs:
       - name: Log coverage percentage
         run: |
           echo "coverage = ${{ steps.jacoco.outputs.coverage }}"
+          
       - name: Tests
         run: |
           cd app
           npm run test:coverage
-      - name: Switch to badges branch
-        run: git switch badges
 
       - name: Commit and push
         if: ${{ github.event_name != 'pull_request' }}
