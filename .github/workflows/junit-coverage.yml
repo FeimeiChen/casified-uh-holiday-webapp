@@ -31,6 +31,16 @@ jobs:
           mvn clean test jacoco:report -f api/pom.xml
           mv api/target/ target/
 
+      - name: Check if branch exists and create if not
+        run: |
+          exists=$(git show-ref refs/heads/badges)
+           if [ -n "$exists" ]; then
+              echo "Branch badges already exists."
+          else
+              git checkout -b badges
+              echo "Branch badges created."
+          fi
+
       - name: Generate Jacoco Badge
         id: jacoco
         uses: cicirello/jacoco-badge-generator@v2
