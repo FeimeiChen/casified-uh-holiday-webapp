@@ -27,11 +27,10 @@ jobs:
           branch: badges
 
       - if: steps.check-branch-exists.outputs.exists == 'true'
-        run: echo badges Branch exists'
+        run: echo 'Branch badges exists'
 
       - if: steps.check-branch-exists.outputs.exists == 'false'
-        run: echo '<BRANCH_NAME> Branch NOT FOUND'
-
+        run: echo 'Branch badges NOT FOUND'
 
       - name: Create badges branch
         run: git checkout -b badges
@@ -73,7 +72,6 @@ jobs:
           coverage-summary-path: app/coverage/coverage-summary.json
           no-commit: true
           target-branch: badges
-
 
       - name: Commit and push
         if: ${{ github.event_name != 'pull_request' }}
