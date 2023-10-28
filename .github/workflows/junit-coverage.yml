@@ -22,11 +22,7 @@ jobs:
           node-version: 16.x
 
       - name: Check if branch exists and create if not
-        run: |
-            exists=$(git show-ref refs/heads/badges)
-             if [ -n "$exists" ]; then
-                echo "Branch badges already exists."
-            fi     
+        run: git checkout -B badges
 
 
       - name: Create badges branch
