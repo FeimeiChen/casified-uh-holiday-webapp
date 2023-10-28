@@ -24,7 +24,7 @@ jobs:
       - name: Check if branch exists and create if not
         uses: GuillaumeFalourd/branch-exists@v1
         with:
-        branch: badges
+          branch: badges
 
       - if: steps.check-branch-exists.outputs.exists == 'true'
         run: echo badges Branch exists'
