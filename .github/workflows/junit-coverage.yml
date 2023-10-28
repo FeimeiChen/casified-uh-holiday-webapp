@@ -21,8 +21,15 @@ jobs:
         with:
           node-version: 16.x
 
-      - name: Delete remote badges branch
-        run: git push origin --delete badges
+      - name: Check if branch exists and create if not
+        run: |
+             if [ -n git show-ref refs/heads/badges]; then
+                echo "Branch badges already exists."
+            else
+                git checkout -b badges
+                echo "Branch badges created."
+            fi     
+
 
       - name: Create badges branch
         run: git checkout -b badges
