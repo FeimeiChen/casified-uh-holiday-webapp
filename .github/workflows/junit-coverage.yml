@@ -42,14 +42,6 @@ jobs:
           mvn clean test jacoco:report -f api/pom.xml
           mv api/target/ target/
 
-      - name: Generating coverage badges
-        uses: jpb06/jest-badges-action@latest
-        with:
-          branches: '*'
-          coverage-summary-path: app/coverage/coverage-summary.json
-          no-commit: true
-          target-branch: badges
-
       - name: Generate Jacoco Badge
         id: jacoco
         uses: cicirello/jacoco-badge-generator@v2
