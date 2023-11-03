@@ -56,7 +56,7 @@ jobs:
 
       - name: Switch to badges branch
         run: git switch badges
-      
+
       - name: Generating coverage badges
         uses: jpb06/jest-badges-action@latest
         with:
