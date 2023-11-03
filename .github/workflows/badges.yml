@@ -48,7 +48,6 @@ jobs:
             git rm -rf .
             git commit -m "Remove .github and all other files"
             git push -u origin $branch_name
-            git checkout main
           else
             echo "Branch $branch_name already exists."
           fi
