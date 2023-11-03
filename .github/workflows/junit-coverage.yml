@@ -25,6 +25,7 @@ jobs:
         run: |
           cd app
           npm install
+
       - name: Build with Maven
         run: |
           mvn clean test jacoco:report -f api/pom.xml
@@ -41,11 +42,12 @@ jobs:
       - name: Log coverage percentage
         run: |
           echo "coverage = ${{ steps.jacoco.outputs.coverage }}"
-          
+
       - name: Tests
         run: |
           cd app
           npm run test:coverage
+          
       - name: Switch to badges branch
         run: git switch badges
 
