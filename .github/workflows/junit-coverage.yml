@@ -16,7 +16,8 @@ jobs:
           branch_name="badges"
           if ! git ls-remote --exit-code origin refs/heads/$branch_name; then
             echo "Branch $branch_name does not exist. Creating it..."
-            git checkout -b $branch_name
+            git checkout --orphan $branch_name
+            git rm -r -f .     
             git push -u origin $branch_name
           else
             echo "Branch $branch_name already exists."
