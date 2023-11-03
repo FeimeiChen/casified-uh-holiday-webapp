@@ -32,7 +32,7 @@ jobs:
           cd app
           npm install
 
-      - name: Tests
+      - name: Jest Tests
         run: |
           cd app
           npm run test:coverage
