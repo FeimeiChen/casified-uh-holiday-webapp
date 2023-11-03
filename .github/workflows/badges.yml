@@ -50,7 +50,7 @@ jobs:
             git push -u origin $branch_name
           else
             echo "Branch $branch_name already exists."
-            git switch badges
+            git switch $branch_name
           fi
 
       - name: Generating coverage badges
