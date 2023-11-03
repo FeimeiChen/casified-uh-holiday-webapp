@@ -36,7 +36,7 @@ jobs:
           mvn clean test jacoco:report -f api/pom.xml
           mv api/target/ target/
 
-      - name: Check if badges branch exists
+      - name: Check if badges branch exists and Switch to badges branch
         run: |
           branch_name="badges"
           if ! git ls-remote --exit-code origin refs/heads/$branch_name; then
@@ -50,10 +50,8 @@ jobs:
             git push -u origin $branch_name
           else
             echo "Branch $branch_name already exists."
+            git switch badges
           fi
-
-      - name: Switch to badges branch
-        run: git switch badges
 
       - name: Generating coverage badges
         uses: jpb06/jest-badges-action@latest
