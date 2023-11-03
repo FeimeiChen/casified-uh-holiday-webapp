@@ -42,6 +42,9 @@ jobs:
           mvn clean test jacoco:report -f api/pom.xml
           mv api/target/ target/
 
+      - name: Switch to badges branch
+        run: git switch badges
+
       - name: Generate Jacoco Badge
         id: jacoco
         uses: cicirello/jacoco-badge-generator@v2
@@ -53,9 +56,6 @@ jobs:
       - name: Log coverage percentage
         run: |
           echo "coverage = ${{ steps.jacoco.outputs.coverage }}"
-
-      - name: Switch to badges branch
-        run: git switch badges
 
       - name: Generating coverage badges
         uses: jpb06/jest-badges-action@latest
