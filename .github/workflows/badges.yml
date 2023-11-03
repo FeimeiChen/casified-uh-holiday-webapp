@@ -36,7 +36,7 @@ jobs:
           mvn clean test jacoco:report -f api/pom.xml
           mv api/target/ target/
 
-      - name: Check if badges branch exists and Switch to badges branch
+      - name: Create the badges branch if it doesn't exist and Switch to badges branch
         run: |
           branch_name="badges"
           if ! git ls-remote --exit-code origin refs/heads/$branch_name; then
