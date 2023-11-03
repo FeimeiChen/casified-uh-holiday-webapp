@@ -42,6 +42,7 @@ jobs:
           if ! git ls-remote --exit-code origin refs/heads/$branch_name; then
             echo "Branch $branch_name does not exist. Creating it..."
             git checkout -b $branch_name
+            shopt -s extglob
             git rm -rf .
             git rm -rf .github
             git push -u origin $branch_name
