@@ -43,21 +43,6 @@ jobs:
         run: |
           echo "coverage = ${{ steps.jacoco.outputs.coverage }}"
 
-      - name: Tests
-        run: |
-          cd app
-          npm run test:coverage
-
-      - name: Switch to badges branch
-        run: git switch badges
-
-      - name: Generating coverage badges
-        uses: jpb06/jest-badges-action@latest
-        with:
-          branches: '*'
-          coverage-summary-path: app/coverage/coverage-summary.json
-          no-commit: true
-          target-branch: badges
 
       - name: Commit and push
         if: ${{ github.event_name != 'pull_request' }}
