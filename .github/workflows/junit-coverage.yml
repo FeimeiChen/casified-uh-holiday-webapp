@@ -21,8 +21,7 @@ jobs:
           else
             echo "Branch $branch_name already exists."
           fi
-          shell: bash
-
+          
       - name: Checkout badges branch dedicated to storing badges only
         uses: actions/checkout@v3
         with:
