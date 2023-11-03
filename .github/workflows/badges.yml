@@ -1,4 +1,4 @@
-name: Coverage
+name: Badges
 
 on: push
 
@@ -43,7 +43,6 @@ jobs:
             echo "Branch $branch_name does not exist. Creating it..."
             git checkout -b $branch_name
             git rm -r -f .
-            git rm -r -f .github  
             git push -u origin $branch_name
             git checkout main
           else
