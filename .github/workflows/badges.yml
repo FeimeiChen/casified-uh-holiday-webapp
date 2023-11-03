@@ -41,6 +41,8 @@ jobs:
           branch_name="badges"
           if ! git ls-remote --exit-code origin refs/heads/$branch_name; then
             echo "Branch $branch_name does not exist. Creating it..."
+            git config --global user.name 'FeimeiChen'
+            git config --global user.email 'FeimeiChen@users.noreply.github.com'
             git checkout -b $branch_name
             git rm -rf .github 
             git rm -rf .
