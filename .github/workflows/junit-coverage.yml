@@ -11,25 +11,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Check if badges branch exists
-        run: |
-          branch_name="badges"
-          if ! git ls-remote --exit-code origin refs/heads/$branch_name; then
-            echo "Branch $branch_name does not exist. Creating it..."
-            git checkout -b $branch_name
-            git rm -r -f .
-            git push -u origin $branch_name
-            git checkout main
-          else
-            echo "Branch $branch_name already exists."
-          fi
-          
-      - name: Checkout badges branch dedicated to storing badges only
-        uses: actions/checkout@v3
-        with:
-          ref: badges
-          path: badges
-
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -54,6 +35,19 @@ jobs:
         run: |
           mvn clean test jacoco:report -f api/pom.xml
           mv api/target/ target/
+
+      - name: Check if badges branch exists
+        run: |
+          branch_name="badges"
+          if ! git ls-remote --exit-code origin refs/heads/$branch_name; then
+            echo "Branch $branch_name does not exist. Creating it..."
+            git checkout -b $branch_name
+            git rm -r -f .
+            git push -u origin $branch_name
+            git checkout main
+          else
+            echo "Branch $branch_name already exists."
+          fi
 
       - name: Switch to badges branch
         run: git switch badges
