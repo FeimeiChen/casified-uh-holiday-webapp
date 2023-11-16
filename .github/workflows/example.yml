@@ -94,7 +94,9 @@ jobs:
           mvn clean test jacoco:report -f api/pom.xml -D'logging.level.edu.hawaii.its.holiday=OFF' -D'logging.level.org.springframework=ERROR' -D'spring.main.banner-mode=off'
           mv api/target/ target/    
 
-
+      - name: Switch to badges branch
+        run: git switch badges
+        
       - name: Generate Jacoco Badge
         id: jacoco
         uses: cicirello/jacoco-badge-generator@v2
