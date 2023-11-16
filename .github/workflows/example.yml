@@ -75,7 +75,7 @@ jobs:
           fi    
 
 
-  generate-jacoco-badge:
+  generate-jacoco-badge-on:
     needs: create-branch
     runs-on: ubuntu-latest
     steps:
