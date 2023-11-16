@@ -28,7 +28,7 @@ jobs:
             echo "Branch $branch_name already exists."
           fi
 
-  generate-jest-badges:
+  generate-jest-badges-on-badges-branch:
     needs: create-branch
     runs-on: ubuntu-latest
     steps:
@@ -75,7 +75,7 @@ jobs:
           fi    
 
 
-  generate-jacoco-badge-on:
+  generate-jacoco-badges-on-badges-branch:
     needs: create-branch
     runs-on: ubuntu-latest
     steps:
