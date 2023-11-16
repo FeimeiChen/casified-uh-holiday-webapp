@@ -96,7 +96,7 @@ jobs:
 
       - name: Switch to badges branch
         run: git switch badges
-        
+
       - name: Generate Jacoco Badge
         id: jacoco
         uses: cicirello/jacoco-badge-generator@v2
