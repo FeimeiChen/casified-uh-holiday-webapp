@@ -22,7 +22,7 @@ jobs:
             git checkout --orphan $branch_name
             git rm -rf .github
             git rm -rf .
-            git push -u origin $branch_name
+            git push -f 
           else
             echo "Branch $branch_name already exists."
           fi
