@@ -102,7 +102,9 @@ jobs:
           npm run test:coverage
 
       - name: Switch to badges branch
-        run: git switch badges
+        run: |
+            git fetch
+            git switch badges
 
       - name: Generating coverage badges
         uses: jpb06/jest-badges-action@latest
