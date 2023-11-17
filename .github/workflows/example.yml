@@ -35,12 +35,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Checkout badges branch dedicated to storing badges only
-        uses: actions/checkout@v2
-        with:
-          ref: badges
-          path: badges
-
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
@@ -50,6 +44,12 @@ jobs:
         run: |
           mvn clean test jacoco:report -f api/pom.xml -D'logging.level.edu.hawaii.its.holiday=OFF' -D'logging.level.org.springframework=ERROR' -D'spring.main.banner-mode=off'
           mv api/target/ target/
+
+      - name: Switch to badges branch
+        run: |
+          git fetch
+          git switch badges    
+
       - name: Generate Jacoco Badge
         id: jacoco
         uses: cicirello/jacoco-badge-generator@v2
@@ -103,8 +103,8 @@ jobs:
 
       - name: Switch to badges branch
         run: |
-            git fetch
-            git switch badges
+          git fetch
+          git switch badges
 
       - name: Generating coverage badges
         uses: jpb06/jest-badges-action@latest
