@@ -22,7 +22,8 @@ jobs:
             git checkout --orphan $branch_name
             git rm -rf .github
             git rm -rf .
-            git push -f 
+            git commit --allow-empty -m "Initial commit for $branch_name"
+            git push -u origin $branch_name
           else
             echo "Branch $branch_name already exists."
           fi
