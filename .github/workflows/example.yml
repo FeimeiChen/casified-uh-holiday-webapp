@@ -19,7 +19,6 @@ jobs:
           if ! git ls-remote --exit-code origin refs/heads/$branch_name; then
             echo "Branch $branch_name does not exist. Creating it..."
             git checkout --orphan $branch_name
-            git rm -rf .github
             git rm -rf .
             git commit --allow-empty -m "Initial commit for $branch_name"
             git push -u origin $branch_name
